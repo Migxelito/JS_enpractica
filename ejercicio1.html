@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 1</title>
+</head>
+
+<body>
+    <div>
+        <div style="width: 40%;margin: 0 auto">
+            <h2>
+                Escríbenos !!!
+            </h2>
+            <div class="resultado" style="color:green;font-style: italic">
+            </div>
+            <form id="formulario">
+                <div>
+                    <div style="display: flex;flex-direction: column;">
+                        <label>
+                            Nombre completo
+                        </label>
+                        <input id="nombre" type="text">
+                        <p class="errorNombre" style="color:red;font-style: italic;"></p>
+                    </div>
+                    <div style="display: flex;flex-direction: column;">
+                        <label>
+                            Asunto
+                        </label>
+                        <input id="asunto" type="text">
+                        <p class="errorAsunto" style="color:red;font-style: italic;"></p>
+                    </div>
+                </div>
+                <div style="display: flex;flex-direction: column;">
+                    <label>
+                        Mensaje
+                    </label>
+                    <textarea id="mensaje"></textarea>
+                    <p class="errorMensaje" style="color:red;font-style: italic;"></p>
+                </div>
+                <div>
+                    <button id="botton" type="submit">
+                        Envíar mensaje
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script> // Codigo JS
+
+        let mibtn = document.getElementById("botton");
+        mibtn.addEventListener('click', function (event) {
+            event.preventDefault();
+            let todosbuenos = 0;
+            let nombre = document.getElementById("nombre").value
+            let asunto = document.getElementById("asunto").value
+            let mensaje = document.getElementById("mensaje").value
+            let permitido = /[a-zA-Z]/gim;
+            if (nombre.match(permitido)) {
+                todosbuenos++;
+
+            } else {
+
+                document.querySelector('.errorNombre').innerHTML = "el nombre es requerido";
+
+            };
+
+            if (asunto.match(permitido)) {
+                todosbuenos++;
+
+            } else {
+
+                document.querySelector('.errorAsunto').innerHTML = "el asunto es requerido";
+
+            };
+
+            if (mensaje.match(permitido)) {
+                todosbuenos++
+
+            } else {
+
+                document.querySelector('.errorMensaje').innerHTML = "el mensaje es requerido";
+
+            };
+
+            if (todosbuenos >= 3) {
+                document.querySelector('.resultado').innerHTML = "Mensaje enviado con exito!!!"
+                document.querySelector('.errorNombre').innerHTML = "";
+                document.querySelector('.errorAsunto').innerHTML = "";
+                document.querySelector('.errorMensaje').innerHTML = "";
+
+
+            }
+        });
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 3</title>
+    <script src="assets/js/ej3.js"></script>
+</head>
+
+<body>
+    <div>
+        <div>
+            <h2>
+                Resultado: <span class="resultado"></span>
+            </h2>
+            <div>
+                <div>
+                    <div>
+                        <label for="">Valor 1</label>
+                        <input id="valor1" type="text">
+                    </div>
+                    <div>
+                        <label for="">Valor 2</label>
+                        <input id="valor2" type="text">
+                    </div>
+                    <div style="display: flex">
+                        <button id="btn-sumar" type="button">
+                            Sumar
+                        </button>
+                        <button id="btn-restar" type="button">
+                            Restar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>  // Codigo JS
+        let miBtnSumar = document.getElementById("btn-sumar");
+        miBtnSumar.addEventListener('click', function () {
+            var x, y, suma, text;
+            x = document.getElementById("valor1").value;
+            y = document.getElementById("valor2").value;
+            let validar = /[^1-9]/
+            if ((validar.test(x) == true) || (validar.test(y) == true) || ((x === '') || (y === ''))) {
+                text = "Es necesarios introducir dos números válidos";
+            } else {
+                //si no ponemos parseFloat concatenaría x con y  
+                suma = parseFloat(x) + parseFloat(y);
+                text = suma;
+            }
+            document.querySelector('.resultado').innerHTML = text;
+
+
+        })
+
+
+        let miBtnrestar = document.getElementById("btn-restar");
+        miBtnrestar.addEventListener('click', function () {
+            var x, y, resta, text;
+            x = document.getElementById("valor1").value;
+            y = document.getElementById("valor2").value;
+            let validar = /[^1-9]/
+            if ((validar.test(x) == true) || (validar.test(y) == true) || ((x === '') || (y === '')))
+            //
+            {
+                text = "Es necesarios introducir dos números válidos";
+            }
+            else {
+                //si no ponemos parseFloat concatenaría x con y  
+                resta = parseFloat(x) - parseFloat(y);
+
+                if (resta < 0) {
+                    text = 0
+                }
+                else {
+                    text = resta
+                }
+
+            }
+            document.querySelector('.resultado').innerHTML = text;
+
+
+        })
+
+
+
+    </script>
+</body>
+
+</html>
